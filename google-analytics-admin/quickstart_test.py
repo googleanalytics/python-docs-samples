@@ -1,4 +1,4 @@
-# Copyright 2021 Google LLC All Rights Reserved.
+# Copyright 2022 Google LLC All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,19 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
-
-import accounts_user_links_get
-
-TEST_ACCOUNT_ID = os.getenv("GA_TEST_ACCOUNT_ID")
-TEST_USER_LINK_ID = os.getenv("GA_TEST_USER_LINK_ID")
+import quickstart
 
 
-def test_accounts_user_links_get(capsys):
+def test_accounts_list(capsys):
     transports = ["grpc", "rest"]
     for transport in transports:
-        accounts_user_links_get.get_account_user_link(
-            TEST_ACCOUNT_ID, TEST_USER_LINK_ID, transport=transport
-        )
+        quickstart.list_accounts(transport=transport)
         out, _ = capsys.readouterr()
         assert "Result" in out

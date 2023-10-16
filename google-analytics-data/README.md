@@ -3,7 +3,7 @@
 [![Open in Cloud Shell][shell_img]][shell_link]
 
 [shell_img]: http://gstatic.com/cloudssh/images/open-btn.png
-[shell_link]: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/python-analytics-data&page=editor&working_dir=samples/snippets
+[shell_link]: https://console.cloud.google.com/cloudshell/open?git_repo=googleanalytics/python-docs-samples&page=editor&working_dir=google-analytics-data
 
 These samples show how to use the
 [Google Analytics Data API](https://developers.google.com/analytics/devguides/reporting/data/v1) from Python.
@@ -20,8 +20,8 @@ These samples show how to use the
 ```
 3.  **Clone the repo** and cd into this directory
 ```sh
-    $ git clone https://github.com/googleapis/python-analytics-data
-    $ cd python-analytics-data/samples/snippets
+    $ git clone https://github.com/googleanalytics/python-docs-samples
+    $ cd google-analytics-admin
 ```
 4.  **Install dependencies** via [pip3](https://pip.pypa.io/en/stable).
     Run `pip3 install --upgrade google-analytics-data`.

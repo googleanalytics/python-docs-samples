@@ -15,19 +15,19 @@ These samples show how to use the
     Click "Go to credentials" after enabling the APIs. Click "Create Credentials"
     and select "Service Account Credentials" and download the credentials file. Then set the path to
     this file to the environment variable `GOOGLE_APPLICATION_CREDENTIALS`:
-```sh
-    $ export GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json
-```
+    ```sh
+    export GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json
+    ```
 3.  **Clone the repo** and cd into this directory
-```sh
-    $ git clone https://github.com/googleanalytics/python-docs-samples
-    $ cd google-analytics-admin
-```
+    ```sh
+    git clone https://github.com/googleanalytics/python-docs-samples
+    cd python-docs-samples/google-analytics-admin
+    ```
 4.  **Install dependencies** via [pip3](https://pip.pypa.io/en/stable).
     Run `pip3 install --upgrade google-analytics-data`.
 5.  **Review the comments starting with `TODO(developer)` and update the code
 to use correct values.**
 6.  **Run** with the command `python3 SNIPPET_NAME.py`. For example:
-```sh
-    $ python3 quickstart.py
-```
+    ```sh
+    python3 quickstart.py
+    ```

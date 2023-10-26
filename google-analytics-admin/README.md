@@ -1,9 +1,9 @@
-# Google Analytics Data API examples
+# Google Analytics Admin API examples
 
 [![Open in Cloud Shell][shell_img]][shell_link]
 
 [shell_img]: http://gstatic.com/cloudssh/images/open-btn.png
-[shell_link]: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleanalytics/python-docs-samples&page=editor&open_in_editor=/google-analytics-data/README.md
+[shell_link]: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleanalytics/python-docs-samples&page=editor&open_in_editor=/google-analytics-admin/README.md
 
 These samples show how to use the
 [Google Analytics Data API](https://developers.google.com/analytics/devguides/reporting/data/v1) from Python.

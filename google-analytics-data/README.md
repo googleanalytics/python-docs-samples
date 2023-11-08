@@ -22,7 +22,7 @@ These samples show how to use the
 3.  **Clone the repo** and cd into this directory
     ```sh
     git clone https://github.com/googleanalytics/python-docs-samples
-    cd python-docs-samples/google-analytics-admin
+    cd python-docs-samples/google-analytics-data
     ```
 4.  **Install dependencies** via [pip3](https://pip.pypa.io/en/stable).
     ```sh

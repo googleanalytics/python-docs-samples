@@ -6,10 +6,10 @@
 [shell_link]: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleanalytics/python-docs-samples&page=editor&open_in_editor=/google-analytics-admin/README.md
 
 These samples show how to use the
-[Google Analytics Data API](https://developers.google.com/analytics/devguides/reporting/data/v1) from Python.
+[Google Analytics Admin API](https://developers.google.com/analytics/devguides/config/admin/v1) from Python.
 
 ## Build and Run
-1.  **Enable APIs** - [Enable the Analytics Data API](https://console.cloud.google.com/flows/enableapi?apiid=analyticsdata.googleapis.com)
+1.  **Enable APIs** - [Enable the Analytics Admin API](https://console.cloud.google.com/flows/enableapi?apiid=analyticsadmin.googleapis.com)
     and create a new project or select an existing project.
 2.  **Download The Credentials** - Configure your project using [Application Default Credentials][adc].
     Click "Go to credentials" after enabling the APIs. Click "Create Credentials"

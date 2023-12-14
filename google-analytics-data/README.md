@@ -9,6 +9,7 @@ These samples show how to use the
 [Google Analytics Data API](https://developers.google.com/analytics/devguides/reporting/data/v1) from Python.
 
 ## Build and Run
+
 1.  **Enable APIs** - [Enable the Analytics Data API](https://console.cloud.google.com/flows/enableapi?apiid=analyticsdata.googleapis.com)
     and create a new project or select an existing project.
 2.  **Download The Credentials** - Configure your project using [Application Default Credentials][adc].
@@ -28,9 +29,11 @@ These samples show how to use the
     ```sh
     pip3 install --upgrade -r requirements.txt
     ```
-5.  **Review the comments starting with `TODO(developer)` and update the code
-to use correct values.**
+5.  **Review the comments starting with `TODO(developer)` and update the code to
+    use correct values.**
 6.  **Run** with the command `python3 SNIPPET_NAME.py`. For example:
     ```sh
     $ python3 quickstart.py
     ```
+
+[adc]: https://cloud.google.com/docs/authentication#adc

@@ -25,10 +25,11 @@ def test_properties_run_access_report(capsys):
     transports = ["grpc", "rest"]
     for transport in transports:
         # This test ensures that the call is valid and reaches the server, even
-        # though the operation does not succeed due to permission error.
+        # though the operation does not succeed due to the test property not
+        # being a Google Analytics 360 property.
         with pytest.raises(
             Exception,
-            match="Access record reports are only allowed on Google Analytics 360 properties.",
+            match="Data Access Reports are only allowed on Google Analytics 360 properties.",
         ):
             properties_run_access_report.run_access_report(
                 TEST_PROPERTY_ID, transport=transport

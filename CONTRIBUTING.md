@@ -56,11 +56,9 @@ nox -s lint blacken
 
 1.  Configure your environment and credentials as described in the
     [README](README.md).
-2.  Determine which GA4 property you want to use for tests, and note its
-    property ID.
-3.  Change into the directory of the project you want to test (either
+2.  Change into the directory of the project you want to test (either
     `google-analytics-admin` or `google-analytics-data`).
-4.  Configure environment variables required by tests using the following
+3.  Configure environment variables required by tests using the following
     commands:
 
     ```sh
@@ -74,7 +72,7 @@ nox -s lint blacken
     export GA_TEST_CONVERSION_EVENT_ID=
     ```
 
-5.  Execute tests from the `google-analytics-admin` or `google-analytics-data`
+4.  Execute tests from the `google-analytics-admin` or `google-analytics-data`
     directory, using either `nox` or `pytest`. Using `nox` provides the
     additional benefit of formatting all files, and also automatically creates a
     virtual environment to test samples using different versions of Python.

@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 TEST_CONFIG_OVERRIDE = {
     # You can opt out from the test for specific Python versions.
     "ignored_versions": ["2.7"],
@@ -23,5 +25,10 @@ TEST_CONFIG_OVERRIDE = {
     # 'gcloud_project_env': 'BUILD_SPECIFIC_GCLOUD_PROJECT',
     # A dictionary you want to inject into your test. Don't put any
     # secrets here. These values will override predefined values.
-    "envs": {"GA_TEST_PROPERTY_ID": "222596558"},
+    #
+    # Adds the GA_TEST_PROPERTY_ID required by tests for Google Analytics
+    # Data samples. Uses a specific test property by default, but can
+    # be overridden by setting this environment variable before running
+    # nox.
+    "envs": {"GA_TEST_PROPERTY_ID": os.getenv("GA_TEST_PROPERTY_ID", "222596558")},
 }

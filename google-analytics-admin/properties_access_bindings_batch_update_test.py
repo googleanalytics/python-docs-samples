@@ -12,16 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
+import pytest
 
-import properties_get
+import properties_access_bindings_batch_update
 
-TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
+FAKE_PROPERTY_ID = "1"
+FAKE_ACCESS_BINDING_ID = "1"
 
 
-def test_properties_get(capsys):
+def test_properties_access_bindings_batch_update():
     transports = ["grpc", "rest"]
     for transport in transports:
-        properties_get.get_property(TEST_PROPERTY_ID, transport=transport)
-        out, _ = capsys.readouterr()
-        assert "Result" in out
+        # This test ensures that the call is valid and reaches the server, even
+        # though the operation does not succeed due to permission error.
+        with pytest.raises(Exception, match="The caller does not have permission"):
+            properties_access_bindings_batch_update.batch_update_property_access_binding(
+                FAKE_PROPERTY_ID, FAKE_ACCESS_BINDING_ID, transport=transport
+            )

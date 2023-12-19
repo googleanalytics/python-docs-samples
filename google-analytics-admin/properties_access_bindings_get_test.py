@@ -14,14 +14,17 @@
 
 import os
 
-import properties_get
+import properties_access_bindings_get
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
+TEST_ACCESS_BINDING_ID = os.getenv("GA_TEST_PROPERTY_ACCESS_BINDING_ID")
 
 
-def test_properties_get(capsys):
+def test_properties_access_bindings_get(capsys):
     transports = ["grpc", "rest"]
     for transport in transports:
-        properties_get.get_property(TEST_PROPERTY_ID, transport=transport)
+        properties_access_bindings_get.get_property_access_binding(
+            TEST_PROPERTY_ID, TEST_ACCESS_BINDING_ID, transport=transport
+        )
         out, _ = capsys.readouterr()
         assert "Result" in out

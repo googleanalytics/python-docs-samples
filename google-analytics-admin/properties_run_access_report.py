@@ -43,7 +43,7 @@ def run_access_report(property_id: str, transport: str = None):
     """
     Runs an access report for a Google Analytics property. The report will
     aggregate over dimensions `userEmail`, `accessedPropertyId`,
-    `propertyUserLink`, `reportType`, `revenueDataReturned`, `costDataReturned`,
+    `reportType`, `revenueDataReturned`, `costDataReturned`,
     `userIP`, and return the access count, as well as the most recent access
     time for each combination.
     See https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema
@@ -59,7 +59,6 @@ def run_access_report(property_id: str, transport: str = None):
         dimensions=[
             AccessDimension(dimension_name="userEmail"),
             AccessDimension(dimension_name="accessedPropertyId"),
-            AccessDimension(dimension_name="propertyUserLink"),
             AccessDimension(dimension_name="reportType"),
             AccessDimension(dimension_name="revenueDataReturned"),
             AccessDimension(dimension_name="costDataReturned"),

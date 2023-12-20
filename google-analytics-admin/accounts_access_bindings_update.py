@@ -57,9 +57,8 @@ def update_account_access_binding(
             or "rest". If set to None, a transport is chosen automatically.
     """
     client = AnalyticsAdminServiceClient(transport=transport)
-    # This call updates the email address and direct roles of the access binding.
-    # The access binding to update is specified in the `name` field of the `AccessBinding`
-    # instance.
+    # This call updates the roles of the access binding. The access binding to
+    # update is specified in the `name` field of the `AccessBinding` instance.
     access_binding = client.update_access_binding(
         access_binding=AccessBinding(
             name=f"accounts/{account_id}/accessBindings/{account_access_binding_id}",

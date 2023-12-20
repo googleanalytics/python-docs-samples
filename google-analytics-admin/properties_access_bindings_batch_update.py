@@ -61,9 +61,8 @@ def batch_update_property_access_binding(
             or "rest". If set to None, a transport is chosen automatically.
     """
     client = AnalyticsAdminServiceClient(transport=transport)
-    # This call updates the email address and direct roles of the access binding.
-    # The access binding to update is specified in the `name` field of the `AccessBinding`
-    # instance.
+    # This call updates the roles of the access binding. The access binding to
+    # update is specified in the `name` field of the `AccessBinding` instance.
     response = client.batch_update_access_bindings(
         BatchUpdateAccessBindingsRequest(
             parent=f"properties/{property_id}",

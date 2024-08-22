@@ -12,19 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
+import pytest
 
-import properties_conversion_events_get
+import properties_key_events_delete
 
-TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
-TEST_CONVERSION_EVENT_ID = os.getenv("GA_TEST_CONVERSION_EVENT_ID")
+FAKE_PROPERTY_ID = "1"
+FAKE_KEY_EVENT_ID = "1"
 
 
-def test_properties_conversion_events_get(capsys):
+def test_properties_key_events_delete():
     transports = ["grpc", "rest"]
     for transport in transports:
-        properties_conversion_events_get.get_conversion_event(
-            TEST_PROPERTY_ID, TEST_CONVERSION_EVENT_ID, transport=transport
-        )
-        out, _ = capsys.readouterr()
-        assert "Result" in out
+        # This test ensures that the call is valid and reaches the server, even
+        # though the operation does not succeed due to permission error.
+        with pytest.raises(Exception, match="The caller does not have permission"):
+            properties_key_events_delete.delete_key_event(
+                FAKE_PROPERTY_ID, FAKE_KEY_EVENT_ID, transport=transport
+            )

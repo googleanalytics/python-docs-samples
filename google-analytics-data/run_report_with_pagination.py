@@ -56,7 +56,7 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
         ],
         metrics=[
             Metric(name="sessions"),
-            Metric(name="conversions"),
+            Metric(name="keyEvents"),
             Metric(name="totalRevenue"),
         ],
         limit=100000,
@@ -79,7 +79,7 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
         ],
         metrics=[
             Metric(name="sessions"),
-            Metric(name="conversions"),
+            Metric(name="keyEvents"),
             Metric(name="totalRevenue"),
         ],
         limit=100000,

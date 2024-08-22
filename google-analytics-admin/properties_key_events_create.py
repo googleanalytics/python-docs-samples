@@ -14,15 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Admin API sample application which creates a conversion
+"""Google Analytics Admin API sample application which creates a key
 event for the Google Analytics 4 property.
 
-See https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/properties.conversionEvents/create
+See https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/properties.keyEvents/create
 for more information.
 """
-# [START analyticsadmin_properties_conversion_events_create]
+# [START analyticsadmin_properties_key_events_create]
 from google.analytics.admin import AnalyticsAdminServiceClient
-from google.analytics.admin_v1alpha import ConversionEvent
+from google.analytics.admin_v1alpha import KeyEvent
 
 
 def run_sample():
@@ -37,12 +37,12 @@ def run_sample():
     #  property ID (e.g. "123456") before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
 
-    create_conversion_event(property_id)
+    create_key_event(property_id)
 
 
-def create_conversion_event(property_id: str, transport: str = None):
+def create_key_event(property_id: str, transport: str = None):
     """
-    Creates a conversion event for the Google Analytics 4 property.
+    Creates a key event for the Google Analytics 4 property.
 
     Args:
         property_id(str): The Google Analytics Property ID.
@@ -50,20 +50,20 @@ def create_conversion_event(property_id: str, transport: str = None):
             or "rest". If set to None, a transport is chosen automatically.
     """
     client = AnalyticsAdminServiceClient(transport=transport)
-    conversion_event = client.create_conversion_event(
+    key_event = client.create_key_event(
         parent=f"properties/{property_id}",
-        conversion_event=ConversionEvent(event_name="test_purchase"),
+        key_event=KeyEvent(event_name="test_purchase"),
     )
 
     print("Result:")
-    print(f"Resource name: {conversion_event.name}")
-    print(f"Event name: {conversion_event.event_name}")
-    print(f"Create time: {conversion_event.create_time}")
-    print(f"Deletable: {conversion_event.deletable}")
-    print(f"Custom: {conversion_event.custom}")
+    print(f"Resource name: {key_event.name}")
+    print(f"Event name: {key_event.event_name}")
+    print(f"Create time: {key_event.create_time}")
+    print(f"Deletable: {key_event.deletable}")
+    print(f"Custom: {key_event.custom}")
 
 
-# [END analyticsadmin_properties_conversion_events_create]
+# [END analyticsadmin_properties_key_events_create]
 
 if __name__ == "__main__":
     run_sample()

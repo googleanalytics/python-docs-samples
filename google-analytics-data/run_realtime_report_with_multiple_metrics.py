@@ -46,7 +46,7 @@ def run_realtime_report_with_multiple_metrics(property_id="YOUR-GA4-PROPERTY-ID"
     request = RunRealtimeReportRequest(
         property=f"properties/{property_id}",
         dimensions=[Dimension(name="unifiedScreenName")],
-        metrics=[Metric(name="screenPageViews"), Metric(name="conversions")],
+        metrics=[Metric(name="screenPageViews"), Metric(name="keyEvents")],
     )
     response = client.run_realtime_report(request)
     print_run_report_response(response)

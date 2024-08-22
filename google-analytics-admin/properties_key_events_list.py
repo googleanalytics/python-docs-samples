@@ -14,13 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Admin API sample application which prints the conversion
-event details.
+"""Google Analytics Admin API sample application which lists key events
+for the Google Analytics 4 property.
 
-See https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/properties.conversionEvents/get
+See https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/properties.keyEvents/list
 for more information.
 """
-# [START analyticsadmin_properties_conversion_events_get]
+# [START analyticsadmin_properties_key_events_list]
 from google.analytics.admin import AnalyticsAdminServiceClient
 
 
@@ -30,38 +30,32 @@ def run_sample():
     #  property ID (e.g. "123456") before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
 
-    # TODO(developer): Replace this variable with your conversion event ID
-    #  (e.g. "123456") before running the sample.
-    conversion_event_id = "YOUR-CONVERSION-EVENT-ID"
-
-    get_conversion_event(property_id, conversion_event_id)
+    list_key_events(property_id)
 
 
-def get_conversion_event(
-    property_id: str, conversion_event_id: str, transport: str = None
-):
+def list_key_events(property_id: str, transport: str = None):
     """
-    Retrieves the details for the conversion event.
+    Lists key events for the Google Analytics 4 property.
+
     Args:
         property_id(str): The Google Analytics Property ID.
-        conversion_event_id(str): The conversion event ID
         transport(str): The transport to use. For example, "grpc"
             or "rest". If set to None, a transport is chosen automatically.
     """
     client = AnalyticsAdminServiceClient(transport=transport)
-    conversion_event = client.get_conversion_event(
-        name=f"properties/{property_id}/conversionEvents/{conversion_event_id}"
-    )
+    results = client.list_key_events(parent=f"properties/{property_id}")
 
     print("Result:")
-    print(f"Resource name: {conversion_event.name}")
-    print(f"Event name: {conversion_event.event_name}")
-    print(f"Create time: {conversion_event.create_time}")
-    print(f"Deletable: {conversion_event.deletable}")
-    print(f"Custom: {conversion_event.custom}")
+    for key_event in results:
+        print(f"Resource name: {key_event.name}")
+        print(f"Event name: {key_event.event_name}")
+        print(f"Create time: {key_event.create_time}")
+        print(f"Deletable: {key_event.deletable}")
+        print(f"Custom: {key_event.custom}")
+        print()
 
 
-# [END analyticsadmin_properties_conversion_events_get]
+# [END analyticsadmin_properties_key_events_list]
 
 
 if __name__ == "__main__":

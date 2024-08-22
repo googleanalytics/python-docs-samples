@@ -14,56 +14,52 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Admin API sample application which deletes a conversion
-event for the Google Analytics 4 property.
+"""Google Analytics Admin API sample application which prints the key
+event details.
 
-
-See https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/properties.conversionEvents/delete
+See https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/properties.keyEvents/get
 for more information.
 """
-# [START analyticsadmin_properties_conversion_events_delete]
+# [START analyticsadmin_properties_key_events_get]
 from google.analytics.admin import AnalyticsAdminServiceClient
 
 
 def run_sample():
     """Runs the sample."""
-
-    # !!! ATTENTION !!!
-    #  Running this sample may change/delete your Google Analytics account
-    #  configuration. Make sure to not use the Google Analytics property ID from
-    #  your production environment below.
-
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID (e.g. "123456") before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
 
-    # TODO(developer): Replace this variable with your conversion event ID
+    # TODO(developer): Replace this variable with your key event ID
     #  (e.g. "123456") before running the sample.
-    conversion_event_id = "YOUR-CONVERSION-EVENT-ID"
+    key_event_id = "YOUR-KEY-EVENT-ID"
 
-    delete_conversion_event(property_id, conversion_event_id)
+    get_key_event(property_id, key_event_id)
 
 
-def delete_conversion_event(
-    property_id: str, conversion_event_id: str, transport: str = None
-):
+def get_key_event(property_id: str, key_event_id: str, transport: str = None):
     """
-    Deletes the conversion event for the Google Analytics 4 property.
-
+    Retrieves the details for the key event.
     Args:
         property_id(str): The Google Analytics Property ID.
-        conversion_event_id(str): The conversion event ID
+        key_event_id(str): The key event ID
         transport(str): The transport to use. For example, "grpc"
             or "rest". If set to None, a transport is chosen automatically.
     """
     client = AnalyticsAdminServiceClient(transport=transport)
-    client.delete_conversion_event(
-        name=f"properties/{property_id}/conversionEvents/{conversion_event_id}"
+    key_event = client.get_key_event(
+        name=f"properties/{property_id}/keyEvents/{key_event_id}"
     )
-    print("Conversion event deleted")
+
+    print("Result:")
+    print(f"Resource name: {key_event.name}")
+    print(f"Event name: {key_event.event_name}")
+    print(f"Create time: {key_event.create_time}")
+    print(f"Deletable: {key_event.deletable}")
+    print(f"Custom: {key_event.custom}")
 
 
-# [END analyticsadmin_properties_conversion_events_delete]
+# [END analyticsadmin_properties_key_events_get]
 
 
 if __name__ == "__main__":

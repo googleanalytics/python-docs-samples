@@ -34,8 +34,6 @@ TEST_CONFIG_OVERRIDE = {
         "GA_TEST_WEB_DATA_SECRET_ID": os.getenv(
             "GA_TEST_WEB_DATA_SECRET_ID", "2994983412"
         ),
-        "GA_TEST_CONVERSION_EVENT_ID": os.getenv(
-            "GA_TEST_CONVERSION_EVENT_ID", "2719963095"
-        ),
+        "GA_TEST_KEY_EVENT_ID": os.getenv("GA_TEST_KEY_EVENT_ID", "2719963095"),
     },
 }

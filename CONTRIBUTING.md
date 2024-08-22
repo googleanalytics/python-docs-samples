@@ -69,7 +69,7 @@ nox -s lint blacken
     export GA_TEST_ACCOUNT_ID=
     export GA_TEST_WEB_DATA_STREAM_ID=
     export GA_TEST_WEB_DATA_SECRET_ID=
-    export GA_TEST_CONVERSION_EVENT_ID=
+    export GA_TEST_KEY_EVENT_ID=
     export GA_TEST_ACCOUNT_ACCESS_BINDING_ID=
     export GA_TEST_PROPERTY_ACCESS_BINDING_ID=
     ```

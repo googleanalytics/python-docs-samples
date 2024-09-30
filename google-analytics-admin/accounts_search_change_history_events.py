@@ -20,7 +20,7 @@ history for the Google Analytics account.
 See https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents
 for more information.
 """
-# [START analyticsadmin_properties_key_events_create]
+# [START analyticsadmin_accounts_search_change_history_events]
 from datetime import datetime, timedelta
 
 from google.analytics.admin import (
@@ -107,8 +107,8 @@ def print_resource(resource):
         print("  DisplayVideo360AdvertiserLink resource")
     elif resource.display_video_360_advertiser_link_proposal:
         print("  DisplayVideo360AdvertiserLinkProposal resource")
-    elif resource.key_event:
-        print("  KeyEvent resource")
+    elif resource.conversion_event:
+        print("  ConversionEvent resource")
     elif resource.measurement_protocol_secret:
         print("  MeasurementProtocolSecret resource")
     elif resource.custom_dimension:
@@ -123,7 +123,7 @@ def print_resource(resource):
     print()
 
 
-# [END analyticsadmin_properties_key_events_create]
+# [END analyticsadmin_accounts_search_change_history_events]
 
 if __name__ == "__main__":
     run_sample()

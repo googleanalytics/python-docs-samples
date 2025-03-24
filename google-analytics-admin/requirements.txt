@@ -1,2 +1,2 @@
-google-analytics-admin==0.23.5
+google-analytics-admin==0.23.6
 google-auth-oauthlib==1.2.1

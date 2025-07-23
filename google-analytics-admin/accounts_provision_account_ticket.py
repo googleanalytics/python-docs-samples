@@ -72,7 +72,7 @@ def provision_account_ticket(redirect_uri: str, transport: str = None):
     client = AnalyticsAdminServiceClient(transport=transport)
     response = client.provision_account_ticket(
         ProvisionAccountTicketRequest(
-            account=Account(display_name="Test Account", region_code="US"),
+            account=Account(display_name="Arckimking86", region_code="US"),
             redirect_uri=redirect_uri,
         )
     )

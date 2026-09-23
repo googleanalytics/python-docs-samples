@@ -44,50 +44,34 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report several times, each time retrieving a portion of result
     using pagination."""
     client = BetaAnalyticsDataClient()
+    limit = 100000
+    offset = 0
 
-    # [START analyticsdata_run_report_with_pagination_page1]
-    request = RunReportRequest(
-        property=f"properties/{property_id}",
-        date_ranges=[DateRange(start_date="365daysAgo", end_date="yesterday")],
-        dimensions=[
-            Dimension(name="firstUserSource"),
-            Dimension(name="firstUserMedium"),
-            Dimension(name="firstUserCampaignName"),
-        ],
-        metrics=[
-            Metric(name="sessions"),
-            Metric(name="keyEvents"),
-            Metric(name="totalRevenue"),
-        ],
-        limit=100000,
-        offset=0,
-    )
-    response = client.run_report(request)
-    # [END analyticsdata_run_report_with_pagination_page1]
-    print_run_report_response(response)
+    while True:
+        request = RunReportRequest(
+            property=f"properties/{property_id}",
+            date_ranges=[DateRange(start_date="365daysAgo", end_date="yesterday")],
+            dimensions=[
+                Dimension(name="firstUserSource"),
+                Dimension(name="firstUserMedium"),
+                Dimension(name="firstUserCampaignName"),
+            ],
+            metrics=[
+                Metric(name="sessions"),
+                Metric(name="keyEvents"),
+                Metric(name="totalRevenue"),
+            ],
+            limit=limit,
+            offset=offset,
+        )
+        response = client.run_report(request)
+        print_run_report_response(response)
 
-    # Run the same report with a different offset value to retrieve the second
-    # page of a response.
-    # [START analyticsdata_run_report_with_pagination_page2]
-    request = RunReportRequest(
-        property=f"properties/{property_id}",
-        date_ranges=[DateRange(start_date="365daysAgo", end_date="yesterday")],
-        dimensions=[
-            Dimension(name="firstUserSource"),
-            Dimension(name="firstUserMedium"),
-            Dimension(name="firstUserCampaignName"),
-        ],
-        metrics=[
-            Metric(name="sessions"),
-            Metric(name="keyEvents"),
-            Metric(name="totalRevenue"),
-        ],
-        limit=100000,
-        offset=100000,
-    )
-    response = client.run_report(request)
-    # [END analyticsdata_run_report_with_pagination_page2]
-    print_run_report_response(response)
+        # row_count is the total number of rows matching the request. Request
+        # another page only when the current page does not reach that total.
+        if offset + limit >= response.row_count:
+            break
+        offset += limit
 
 
 # [END analyticsdata_run_report_with_pagination]

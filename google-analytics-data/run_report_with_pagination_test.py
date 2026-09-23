@@ -13,6 +13,8 @@
 # limitations under the License.
 
 import os
+from types import SimpleNamespace
+from unittest import mock
 
 import run_report_with_pagination
 
@@ -23,3 +25,21 @@ def test_run_report_with_pagination(capsys):
     run_report_with_pagination.run_report_with_pagination(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
+
+
+def test_run_report_with_pagination_requests_pages_until_row_count():
+    responses = [
+        SimpleNamespace(row_count=250001, rows=[]),
+        SimpleNamespace(row_count=250001, rows=[]),
+        SimpleNamespace(row_count=250001, rows=[]),
+    ]
+    client = mock.Mock()
+    client.run_report.side_effect = responses
+
+    with mock.patch.object(
+        run_report_with_pagination, "BetaAnalyticsDataClient", return_value=client
+    ), mock.patch.object(run_report_with_pagination, "print_run_report_response"):
+        run_report_with_pagination.run_report_with_pagination("123")
+
+    offsets = [request.offset for (request,) in client.run_report.call_args_list]
+    assert offsets == [0, 100000, 200000]

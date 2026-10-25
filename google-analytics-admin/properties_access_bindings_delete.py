@@ -38,8 +38,8 @@ def run_sample():
     property_id = "YOUR-GA4-PROPERTY-ID"
 
     # TODO(developer): Replace this variable with your Google Analytics
-    #  account access binding ID (e.g. "123456") before running the sample.
-    property_access_binding_id = "YOUR-ACCOUNT-ACCESS-BINDING-ID"
+    #  property access binding ID (e.g. "123456") before running the sample.
+    property_access_binding_id = "YOUR-PROPERTY-ACCESS-BINDING-ID"
 
     delete_property_access_binding(property_id, property_access_binding_id)
 
@@ -52,7 +52,7 @@ def delete_property_access_binding(
 
     Args:
         property_id(str): The Google Analytics Property ID.
-        property_access_binding_id(str): Google Analytics account access binding ID.
+        property_access_binding_id(str): Google Analytics property access binding ID.
         transport(str): The transport to use. For example, "grpc"
             or "rest". If set to None, a transport is chosen automatically.
     """
